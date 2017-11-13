@@ -11,7 +11,8 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    //why no context?
+    //why no context? how to resolve this?
+    //resolved by command context "node build/dev-server.js"
     app: './src/main.js'
   },
   output: {
