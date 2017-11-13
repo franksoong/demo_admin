@@ -34,6 +34,10 @@ module.exports = {
       'optionalDependencies': ['test/unit/index.js']
     }],
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+    // https://eslint.org/docs/rules/no-debugger
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+
+    // https://eslint.org/docs/user-guide/configuring
+    "linebreak-style": "off"
   }
 }
