@@ -1,17 +1,19 @@
 <template>
-  <el-container>
-    <el-header>Header</el-header>
-    <el-container>
-      <el-aside width="200px">Aside</el-aside>
-      <el-container>
-        <el-main >Main</el-main>
-        <el-footer>Footer</el-footer>
-      </el-container>
-    </el-container>
-  </el-container>
+  <new-layout>
+    <div slot='header'>Header</div>
+    <div slot='aside'>Aside</div>
+    <div slot='main'>Main
+      <transition name="fade"
+                      mode="out-in">
+            <router-view></router-view>
+      </transition>
+    </div>
+    <div slot='footer'>Footer</div>
+  </new-layout>
 </template>
 
 <script>
+
 export default {
   data(){
     return {
@@ -37,28 +39,6 @@ export default {
 </script>
 
 
-<<style scoped lang='scss'>
-.el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-  }
-
-  .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-    line-height: 900px;
-  }
-
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    line-height: 1900px;
-  }
-
-
+<style scoped lang='scss'>
 
 </style>
