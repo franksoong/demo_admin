@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    404 page not find!
-  </div>
+    <div class="container">
+        404 page not find!
+    </div>
 </template>
 
 <script>
