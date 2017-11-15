@@ -38,6 +38,10 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
 
     // https://eslint.org/docs/user-guide/configuring
-    "linebreak-style": "off"
+    "linebreak-style": "off",
+
+    "import/extensions": "off",
+
+    "import/no-unresolved": "off"
   }
 }
