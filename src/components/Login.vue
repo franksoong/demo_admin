@@ -16,48 +16,48 @@
 
 <script>
 export default {
-    data() {
-        return {
-            logining: false,
-            account: {
-                username: 'admin',
-                password: '123456'
-            },
-            rules: {
-                username: [
+  data() {
+    return {
+      logining: false,
+      account: {
+        username: 'admin',
+        password: '123456',
+      },
+      rules: {
+        username: [
                     { required: true, message: 'please input user name', trigger: 'blur' },
-                ],
-                password: [
+        ],
+        password: [
                     { required: true, message: 'please input password', trigger: 'blur' },
-                ],
-            },
-            rememberMe: true
-        }
+        ],
+      },
+      rememberMe: true,
+    };
+  },
+
+  methods: {
+    collapse() {
+      this.collapsed = !this.collapsed;
     },
 
-    methods: {
-        collapse: function() {
-            this.collapsed = !this.collapsed;
-        },
+    login(event) {
+      const self = this;
+      this.$refs.loginForm.validate((valid) => {
+        if (valid) {
+          self.logining = true;
+          console.log('login succeed!');
+          self.logining = false;
 
-        login: function(event) {
-            var self = this;
-            this.$refs.loginForm.validate((valid) => {
-                if (valid) {
-                    self.logining = true;
-                    console.log('login succeed!');
-                    self.logining = false;
-
-                    self.$router.push({ path: '/' });
-                } else {
-                    console.log('error submit!!');
-                    return false;
-                }
-            });
+          self.$router.push({ path: '/' });
+        } else {
+          console.log('error submit!!');
+          return false;
         }
+      });
+    },
 
-    }
-}
+  },
+};
 
 </script>
 

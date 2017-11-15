@@ -28,17 +28,16 @@
 
 <script type="text/babel">
 export default {
-    name: "DefaultLayout",
-    props: {},
-    components: {},
-    data() { return {}; },
-    computed: {},
-    methods: {},
-    mounted() {
-        console.log("DefaultLayout mounted!");
-    }
-}
-
+  name: 'DefaultLayout',
+  props: {},
+  components: {},
+  data() { return {}; },
+  computed: {},
+  methods: {},
+  mounted() {
+    console.log('DefaultLayout mounted!');
+  },
+};
 
 </script>
 
