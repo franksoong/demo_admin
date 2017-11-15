@@ -1,62 +1,62 @@
 <template>
-  <el-form :model='account' :rules="rules" ref="loginForm" label-position="left" label-width="0px" class="login-container">
-    <h3 class="title">Login</h3>
-    <el-form-item prop="username">
-      <el-input type="text" v-model="account.username" auto-complete="off" placeholder="user name"></el-input>
-    </el-form-item>
-    <el-form-item prop="password">
-      <el-input type="password" v-model="account.password" auto-complete="off" placeholder="password"></el-input>
-    </el-form-item>
-    <el-checkbox v-model="rememberMe" checked class="remember">Remember me</el-checkbox>
-    <el-form-item style="width:100%;">
-      <el-button type="primary" style="width:100%;" @click.native.prevent="login" :loading="logining">Login</el-button>
-    </el-form-item>
-  </el-form>
+    <el-form :model='account' :rules="rules" ref="loginForm" label-position="left" label-width="0px" class="login-container">
+        <h3 class="title">Login</h3>
+        <el-form-item prop="username">
+            <el-input type="text" v-model="account.username" auto-complete="off" placeholder="user name"></el-input>
+        </el-form-item>
+        <el-form-item prop="password">
+            <el-input type="password" v-model="account.password" auto-complete="off" placeholder="password"></el-input>
+        </el-form-item>
+        <el-checkbox v-model="rememberMe" checked class="remember">Remember me</el-checkbox>
+        <el-form-item style="width:100%;">
+            <el-button type="primary" style="width:100%;" @click.native.prevent="login" :loading="logining">Login</el-button>
+        </el-form-item>
+    </el-form>
 </template>
 
 <script>
 export default {
-  data(){
-    return {
-      logining: false,
-      account: {
-        username: 'admin',
-        password: '123456'
-      },
-      rules: {
-        username: [
-          {required: true, message:'please input user name', trigger: 'blur'},
-        ],
-        password:[
-          {required: true, message:'please input password', trigger: 'blur'},
-        ],
-      },
-      rememberMe: true
-    }
-  },
-
-  methods:{
-    collapse: function() {
-      this.collapsed = !this.collapsed;
+    data() {
+        return {
+            logining: false,
+            account: {
+                username: 'admin',
+                password: '123456'
+            },
+            rules: {
+                username: [
+                    { required: true, message: 'please input user name', trigger: 'blur' },
+                ],
+                password: [
+                    { required: true, message: 'please input password', trigger: 'blur' },
+                ],
+            },
+            rememberMe: true
+        }
     },
 
-    login: function(event) {
-      var self = this;
-      this.$refs.loginForm.validate((valid) => {
-        if (valid) {
-          self.logining = true;
-          console.log('login succeed!');
-          self.logining = false;
+    methods: {
+        collapse: function() {
+            this.collapsed = !this.collapsed;
+        },
 
-          self.$router.push({ path: '/' });
-        }else{
-          console.log('error submit!!');
-          return false;
+        login: function(event) {
+            var self = this;
+            this.$refs.loginForm.validate((valid) => {
+                if (valid) {
+                    self.logining = true;
+                    console.log('login succeed!');
+                    self.logining = false;
+
+                    self.$router.push({ path: '/' });
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
         }
-      });
-    }
 
-  }
+    }
 }
 
 </script>
