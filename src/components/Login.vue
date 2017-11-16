@@ -1,3 +1,11 @@
+/*
+ * @Author: soong
+ * @Date: 2017-11-16 21:35:52
+ * @Last Modified by:   soong
+ * @Last Modified time: 2017-11-16 21:35:52
+ */
+
+
 <template>
     <el-form :model='account' :rules="rules" ref="loginForm" label-position="left" label-width="0px" class="login-container">
         <h3 class="title">Login</h3>
@@ -16,47 +24,47 @@
 
 <script>
 export default {
-  data() {
-    return {
-      logining: false,
-      account: {
-        username: 'admin',
-        password: '123456',
-      },
-      rules: {
-        username: [
+    data() {
+        return {
+            logining: false,
+            account: {
+                username: 'admin',
+                password: '123456',
+            },
+            rules: {
+                username: [
                     { required: true, message: 'please input user name', trigger: 'blur' },
-        ],
-        password: [
+                ],
+                password: [
                     { required: true, message: 'please input password', trigger: 'blur' },
-        ],
-      },
-      rememberMe: true,
-    };
-  },
-
-  methods: {
-    collapse() {
-      this.collapsed = !this.collapsed;
+                ],
+            },
+            rememberMe: true,
+        };
     },
 
-    login(event) {
-      const self = this;
-      this.$refs.loginForm.validate((valid) => {
-        if (valid) {
-          self.logining = true;
-          console.log('login succeed!');
-          self.logining = false;
+    methods: {
+        collapse() {
+            this.collapsed = !this.collapsed;
+        },
 
-          self.$router.push({ path: '/' });
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
-      });
+        login(event) {
+            const self = this;
+            this.$refs.loginForm.validate((valid) => {
+                if (valid) {
+                    self.logining = true;
+                    console.log('login succeed!');
+                    self.logining = false;
+
+                    self.$router.push({ path: '/' });
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
+        },
+
     },
-
-  },
 };
 
 </script>

@@ -8,6 +8,7 @@ import App from '@/App';
 import router from '@/router';
 
 import Mock from '@/mock';
+
 Mock.initilizeMock();
 
 
