@@ -1,3 +1,9 @@
+/*
+ * @Author: soong
+ * @Date: 2017-11-16 21:36:09
+ * @Last Modified by:   soong
+ * @Last Modified time: 2017-11-16 21:36:09
+ */
 <template>
     <new-layout>
         <div slot='header'>Header</div>
@@ -17,28 +23,28 @@ import NewLayout from '@/layout/NewLayout.vue';
 
 
 export default {
-    //components wil be used here
+    // components wil be used here
     components: { NewLayout },
     data() {
         return {
             brand: 'Vue Dashboard',
             collapsed: false,
             userName: '',
-            userAvatar: ''
-        }
+            userAvatar: '',
+        };
     },
 
     methods: {
-        collapse: function() {
+        collapse() {
             this.collapsed = !this.collapsed;
-        }
+        },
 
     },
 
     mounted() {
-        console.log("Home mounted!");
-    }
-}
+        console.log('Home mounted!');
+    },
+};
 
 </script>
 

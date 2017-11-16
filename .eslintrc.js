@@ -35,13 +35,17 @@ module.exports = {
     }],
     // allow debugger during development
     // https://eslint.org/docs/rules/no-debugger
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    'no-debugger': process.env.NODE_ENV === 'production' ? "error" : "off",
 
     // https://eslint.org/docs/user-guide/configuring
     "linebreak-style": "off",
 
     "import/extensions": "off",
 
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+
+    "indent": ["error", 4],
+
+    "func-names": "off"
   }
 }
