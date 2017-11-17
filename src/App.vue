@@ -1,23 +1,45 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
-  </div>
+    <div id='root'>
+        <transition name='fade' mode='out-in'>
+            <router-view/>
+        </transition>
+    </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
+    name: 'app',
+    components: {
+    },
 };
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+body {
+    margin: 0px;
+    padding: 0px;
+    /*background: url(assets/bg1.jpg) center !important;
+    background-size: cover;*/
+    // background: #1F2D3D;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+}
+
+#root {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: all .2s ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+    opacity: 0;
 }
 </style>

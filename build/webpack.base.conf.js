@@ -8,8 +8,11 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
+
 module.exports = {
   entry: {
+    //why no context? how to resolve this?
+    //resolved by command context "node build/dev-server.js"
     app: './src/main.js'
   },
   output: {
@@ -28,7 +31,9 @@ module.exports = {
   },
   module: {
     rules: [
-      {
+
+      // turn off eslint
+      /*{
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
@@ -36,7 +41,7 @@ module.exports = {
         options: {
           formatter: require('eslint-friendly-formatter')
         }
-      },
+      },*/
       {
         test: /\.vue$/,
         loader: 'vue-loader',

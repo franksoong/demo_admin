@@ -11,6 +11,11 @@ const webpack = require('webpack')
 const config = require('../config')
 const webpackConfig = require('./webpack.prod.conf')
 
+
+// automatically open browser, if not set will be false
+const autoOpenBrowser = !!config.build.autoOpenBrowser
+
+
 const spinner = ora('building for production...')
 spinner.start()
 
@@ -37,5 +42,10 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       '  Tip: built files are meant to be served over an HTTP server.\n' +
       '  Opening index.html over file:// won\'t work.\n'
     ))
+
+    if(autoOpenBrowser){
+      const server = require('./myserver');
+    }
+
   })
 })
