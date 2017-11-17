@@ -46,6 +46,7 @@ module.exports = {
 
     "indent": ["error", 4],
 
-    "func-names": "off"
+    "func-names": "off",
+    "no-console": "off"
   }
 }
