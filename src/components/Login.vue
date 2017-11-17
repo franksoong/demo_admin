@@ -57,10 +57,10 @@ export default {
                     self.logining = false;
 
                     self.$router.push({ path: '/' });
-                } else {
-                    console.log('error submit!!');
-                    return false;
+                    return true;
                 }
+                console.log('error submit!!');
+                return false;
             });
         },
 
