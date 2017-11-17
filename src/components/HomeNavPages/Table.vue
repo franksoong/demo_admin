@@ -1,8 +1,8 @@
 /*
  * @Author: soong
  * @Date: 2017-11-16 21:36:27
- * @Last Modified by:   soong
- * @Last Modified time: 2017-11-16 21:36:27
+ * @Last Modified by: soongppp
+ * @Last Modified time: 2017-11-17 15:03:30
  */
 <template>
     <div class="container">
@@ -12,7 +12,7 @@
             <el-table-column label="Name" prop="name" sortable></el-table-column>
             <el-table-column label="Address" prop="addr" sortable></el-table-column>
             <el-table-column label="Action">
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-button type="" size="small" @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
                     <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">Delete</el-button>
                 </template>
