@@ -30,15 +30,15 @@ export default {
 
 </script>
 
-<style scoped lang='scss'>
+<style lang='scss'>
 $color-hamburger: #777;
 $color-hamburger-active: #777;
 $font-size: 30px;
 $bar-width: 0.1em;
 
 .grid-cell {
-    border: 1px solid #E5EFEE;
-    border-width: 0 1px 1px 0;
+    //border: 1px solid #E5EFEE;
+    //border-width: 0 1px 1px 0;
     padding: 5px 5px;
 
     &:nth-child(3n) {

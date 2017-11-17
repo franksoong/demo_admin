@@ -5,13 +5,12 @@
  * @Last Modified time: 2017-11-17 17:46:59
  */
 <template>
-    <new-layout>
+    <new-layout ref="layout">
         <div slot='header'>
-            <hamburger @statechanged="toggerSidePanel"></hamburger>
-            Header
+            <hamburger @statechanged="hamburgerToggled"></hamburger>
         </div>
-        <div slot='aside'>Aside
-            <hamburger @statechanged="toggerSidePanel"></hamburger>
+        <div slot='aside'>
+            anything here...
         </div>
         <div slot='main'>Main
             <transition name="fade" mode="out-in">
@@ -45,13 +44,8 @@ export default {
             this.collapsed = !this.collapsed;
         },
 
-        toggerSidePanel(state) {
-            if (state) {
-                console.log('toggerSidePanel on');
-                console.log('hi');
-            } else {
-                console.log('toggerSidePanel off');
-            }
+        hamburgerToggled(state) {
+            this.$refs.layout.toggleAside(state);
         },
 
 
