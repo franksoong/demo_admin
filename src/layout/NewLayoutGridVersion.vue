@@ -5,24 +5,22 @@
  * @Last Modified time: 2017-11-15 16:55:51
  */
 <template>
-    <el-container class="layout">
-        <el-header class="header">
+    <el-row class="layout">
+        <el-row class="header">
             <slot name="header">header</slot>
-        </el-header>
-        <el-container class="center">
-            <el-aside class="aside" :class="{showaside: asideActive}" ref="aside">
+        </el-row>
+        <el-row class="center">
+            <el-col class="aside" :class="{showaside: asideActive}" :span="asideActive ? 4: 0">
                 <slot name="aside">aside</slot>
-            </el-aside>
-            <el-container class="main" :class="{showaside: asideActive}">
-                <el-main>
-                    <slot name="main">main</slot>
-                </el-main>
-            </el-container>
-        </el-container>
-        <el-footer class="footer">
+            </el-col>
+            <el-col class="main" :class="{showaside: asideActive}" :span="asideActive ? 20: 24">
+                <slot name="main">main</slot>
+            </el-col>
+        </el-row>
+        <el-row class="footer">
             <slot name="footer">footer</slot>
-        </el-footer>
-    </el-container>
+        </el-row>
+    </el-row>
 </template>
 
 
@@ -41,12 +39,11 @@ export default {
     computed: {},
     methods: {
         toggleAside(state) {
-            this.asideActive = !state;
+            this.asideActive = state;
         },
     },
     mounted() {
         console.log('NewLayout mounted!');
-        // clear aside sytle
     },
 };
 
@@ -77,22 +74,15 @@ export default {
 
     .center {
         .aside {
-            width: 0;
 
             &.showaside {
-                width: 20%;
                 padding: 5px 5px;
-                margin-right:5px;
                 border-right: 1px solid $border-level1;
                 box-shadow: 0 0 10px $border-level1;
             }
         }
         .main {
-            width: 100%;
             padding: 5px 5px;
-            .showaside {
-                width: 80%;
-            }
         }
     }
 
