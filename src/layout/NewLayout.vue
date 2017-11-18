@@ -10,10 +10,13 @@
             <slot name="header">header</slot>
         </el-header>
         <el-container class="center">
-            <el-aside class="aside" :class="{showaside: asideActive}" ref="aside">
-                <slot name="aside">aside</slot>
+            <el-aside class="aside" :style="asideStyle">
+                <!--for animation  -->
+                <el-container class="asidecontent" :class="{collapsed: !asideActive}">
+                    <slot name="aside">aside</slot>
+                </el-container>
             </el-aside>
-            <el-container class="main" :class="{showaside: asideActive}">
+            <el-container class="main">
                 <el-main>
                     <slot name="main">main</slot>
                 </el-main>
@@ -38,14 +41,24 @@ export default {
             asideActive: true,
         };
     },
-    computed: {},
+    computed: {
+        asideStyle() {
+            let width = '20%';
+            if (!this.asideActive) {
+                width = '0';
+            }
+            return { width };
+        },
+    },
     methods: {
         toggleAside(state) {
             this.asideActive = !state;
         },
     },
     mounted() {
-        console.log('NewLayout mounted!');
+        const a = this.$refs.aside;
+
+        console.log(`NewLayout mounted!: ${a}`);
         // clear aside sytle
     },
 };
@@ -73,32 +86,37 @@ export default {
         box-shadow: 0 0 5px $color-primary;
         vertical-align: middle;
         line-height: 35px;
+        //position: fixed;
+        z-index: 999;
     }
 
     .center {
+        //margin-top: 60px;
         .aside {
-            width: 0;
+            //transition: all 4.4s linear;
+            transition: width .2s linear;
 
-            &.showaside {
-                width: 20%;
-                padding: 5px 5px;
-                margin-right:5px;
+            .asidecontent {
+                padding: 20px;
                 border-right: 1px solid $border-level1;
                 box-shadow: 0 0 10px $border-level1;
+                display: block;
+                height: 100%;
+
+                .collapsed {
+                    display: none;
+                }
             }
         }
         .main {
-            width: 100%;
-            padding: 5px 5px;
-            .showaside {
-                width: 80%;
-            }
         }
     }
 
     .footer {
         @extend .header;
         padding-bottom: 0;
+        position: relative;
+        line-height: 55px;
     }
 }
 </style>

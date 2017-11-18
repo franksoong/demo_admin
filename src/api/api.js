@@ -8,8 +8,11 @@ import axios from 'axios';
 
 const base = '';
 
-export const requestLogin = params => axios.post(`${base}/login`, { params }).then(res => res.data);
+// post, packed to data field
+export const requestLogin = params => axios.post(`${base}/login`, params).then(res => res.data);
 
+
+// get, packed to params field
 export const getUserList = params => axios.get(`${base}/user/list`, { params });
 
 export const getUserListPage = params => axios.get(`${base}/user/listpage`, { params });

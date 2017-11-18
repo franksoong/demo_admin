@@ -19,6 +19,7 @@ export default {
         });
 
         mock.onPost('/login').reply((config) => {
+            // post required to use config.data to get client packed data
             const { username, password } = JSON.parse(config.data);
             return new Promise((resolve, reject) => {
                 let user = null;
@@ -43,9 +44,9 @@ export default {
 
         // 获取用户列表
         mock.onGet('/user/list').reply((config) => {
-            const { name } = config.params;
+            const { filters } = config.params;
             const mockUsers = _Users.filter((user) => {
-                if (name && user.name.indexOf(name) == -1) return false;
+                if (filters && user.name.indexOf(filters.name) == -1) return false;
                 return true;
             });
             return new Promise((resolve, reject) => {
@@ -59,9 +60,10 @@ export default {
 
         // 获取用户列表（分页）
         mock.onGet('/user/listpage').reply((config) => {
-            const { page, name } = config.params;
+            // get just get the original client packed data
+            const { page, filters } = config.params;
             let mockUsers = _Users.filter((user) => {
-                if (name && user.name.indexOf(name) == -1) return false;
+                if (filters && user.name.indexOf(filters.name) === -1) return false;
                 return true;
             });
             const total = mockUsers.length;
@@ -117,6 +119,7 @@ export default {
                     u.gender = gender;
                     return true;
                 }
+                return false;
             });
             return new Promise((resolve, reject) => {
                 setTimeout(() => {

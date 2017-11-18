@@ -23,6 +23,9 @@
 </template>
 
 <script>
+import api from '@/api';
+
+
 export default {
     data() {
         return {
@@ -50,17 +53,30 @@ export default {
 
         login(event) {
             const self = this;
-            this.$refs.loginForm.validate((valid) => {
+            self.$refs.loginForm.validate((valid) => {
                 if (valid) {
                     self.logining = true;
-                    console.log('login succeed!');
-                    self.logining = false;
 
-                    self.$router.push({ path: '/' });
-                    return true;
+                    const loginParams = { username: self.account.username, password: self.account.password };
+                    console.log(`hi ${loginParams}`);
+                    api.requestLogin(loginParams).then((data) => {
+                        self.logining = false;
+
+                        const { msg, code, user } = data;
+                        if (code !== 200) {
+                            self.$message({
+                                message: msg,
+                                type: 'error',
+                            });
+                        } else {
+                            sessionStorage.setItem('user', JSON.stringify(user));
+                            self.$router.push({ path: '/table' });
+                        }
+                    });
+                } else {
+                    console.log('error submit!!');
+                    return false;
                 }
-                console.log('error submit!!');
-                return false;
             });
         },
 
