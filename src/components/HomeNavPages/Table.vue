@@ -167,9 +167,9 @@ export default {
     },
 
     watch: {
-        // 'filters.name': _.debounce(function () {
-        //     this.getUsers();
-        // }, 500),
+        'filters.name': _.debounce(function () {
+            this.getUsers();
+        }, 500),
     },
 
     methods: {
