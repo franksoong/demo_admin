@@ -33,7 +33,7 @@ export default {
 <style lang='scss'>
 $color-hamburger: #777;
 $color-hamburger-active: #777;
-$font-size: 30px;
+$font-size: 20px;
 $bar-width: 0.1em;
 
 .grid-cell {
