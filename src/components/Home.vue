@@ -6,8 +6,25 @@
  */
 <template>
     <new-layout ref="layout">
-        <div slot='header'>
-            <hamburger @statechanged="hamburgerToggled"></hamburger>
+        <div slot='header' class="container">
+            <el-row class="header">
+                <el-col :span="10" class="icon">
+                    <hamburger @statechanged="hamburgerToggled"></hamburger>
+                </el-col>
+                <el-col :span="10" class="logo">
+                    Dashboard
+                </el-col>
+                <el-col :span="4" class="userinfo">
+                    <el-dropdown trigger="hover">
+                        <span class="el-dropdown-link userinfo-inner"><img :src="this.userAvatar" /> {{userName}}</span>
+                        <el-dropdown-menu slot="dropdown">
+                            <el-dropdown-item>我的消息</el-dropdown-item>
+                            <el-dropdown-item>设置</el-dropdown-item>
+                            <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
+                        </el-dropdown-menu>
+                    </el-dropdown>
+                </el-col>
+            </el-row>
         </div>
         <div slot='aside'>
             anything here...
@@ -25,7 +42,13 @@
                 </transition>
             </el-col>
         </div>
-        <div slot='footer'></div>
+        <div slot='footer' class="footer">
+            <el-row>
+                <el-col :span="8">@Copywright NeoSoong</el-col>
+                <el-col :span="8">Built 20171120</el-col>
+                <el-col :span="8">Contact Me</el-col>
+            </el-row>
+        </div>
     </new-layout>
 </template>
 
@@ -60,7 +83,12 @@ export default {
     },
 
     mounted() {
-        console.log('Home mounted!');
+        let user = sessionStorage.getItem('user');
+        if (user) {
+            user = JSON.parse(user);
+            this.userName = user.name || '';
+            this.userAvatar = user.avatar || '';
+        }
     },
 };
 
@@ -92,4 +120,53 @@ export default {
         box-sizing: border-box;
     }
 }
+
+.container {
+    //position: absolute;
+    //top: 0px;
+    //bottom: 0px;
+    //width: 100%;
+    .header {
+        height: 60px;
+        //line-height: 60px;
+        //background: $color-primary;
+        color: #fff;
+        .userinfo {
+            text-align: right;
+            padding-right: 35px;
+            float: right;
+            .userinfo-inner {
+                cursor: pointer;
+                color: #fff;
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 20px;
+                    margin: 10px 0px 10px 10px;
+                    float: right;
+                }
+            }
+        }
+        .logo {
+            //width:230px;
+            height: 60px;
+            font-size: 22px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-color: rgba(238, 241, 146, 0.3);
+            border-right-width: 1px;
+            border-right-style: solid;
+            img {
+                width: 40px;
+                float: left;
+                margin: 10px 10px 10px 18px;
+            }
+            .txt {
+                color: #fff;
+            }
+        }
+    }
+}
+
+.footer {}
 </style>

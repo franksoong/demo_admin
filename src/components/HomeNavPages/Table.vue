@@ -22,7 +22,7 @@
         </el-col>
 
         <!-- main table  -->
-        <el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selectionChange" style="width: 100%;">
+        <el-table :data="users" class="maintable" highlight-current-row v-loading="listLoading" @selection-change="selectionChange">
             <el-table-column label="Select" width="55" type="selection"></el-table-column>
             <el-table-column label="Id" width="60" type="index"></el-table-column>
             <el-table-column label="Name" width="150" prop="name" sortable></el-table-column>
@@ -340,4 +340,9 @@ export default {
     padding: 10px;
     margin: 10px 0;
 }
+
+.maintable{
+    width: 100%;
+}
+
 </style>

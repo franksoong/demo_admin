@@ -8,7 +8,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import '@/styles/override-theme.scss';
 import 'font-awesome/css/font-awesome.min.css';
 import App from '@/App';
 import router from '@/router';
