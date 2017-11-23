@@ -6,7 +6,7 @@
  */
 <template>
     <el-container class="layout">
-        <el-header class="header">
+        <el-header class="header" ref="header">
             <slot name="header">header</slot>
         </el-header>
         <el-container class="center">
@@ -22,7 +22,7 @@
                 </el-main>
             </el-container>
         </el-container>
-        <el-footer class="footer">
+        <el-footer class="footer" ref="footer">
             <slot name="footer">footer</slot>
         </el-footer>
     </el-container>

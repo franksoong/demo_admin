@@ -6,7 +6,7 @@
  */
 <template>
     <new-layout ref="layout">
-        <div slot='header' class="container">
+        <template slot='header'>
             <el-row class="header">
                 <el-col :span="10" class="icon">
                     <hamburger @statechanged="hamburgerToggled"></hamburger>
@@ -25,11 +25,11 @@
                     </el-dropdown>
                 </el-col>
             </el-row>
-        </div>
-        <div slot='aside'>
+        </template>
+        <template slot='aside'>
             anything here...
-        </div>
-        <div slot='main' class="content-container">
+        </template>
+        <template slot='main'>
             <el-col :span="24" class="breadcrumb-container">
                 <strong class="title">{{$route.name}}</strong>
                 <el-breadcrumb separator="/" class="breadcrumb-inner">
@@ -41,14 +41,14 @@
                     <router-view></router-view>
                 </transition>
             </el-col>
-        </div>
-        <div slot='footer' class="footer">
+        </template>
+        <template slot='footer'>
             <el-row>
                 <el-col :span="8">@Copywright NeoSoong</el-col>
                 <el-col :span="8">Built 20171120</el-col>
                 <el-col :span="8">Contact Me</el-col>
             </el-row>
-        </div>
+        </template>
     </new-layout>
 </template>
 
@@ -127,8 +127,7 @@ export default {
     //bottom: 0px;
     //width: 100%;
     .header {
-        height: 60px;
-        //line-height: 60px;
+        height: 60px; //line-height: 60px;
         //background: $color-primary;
         color: #fff;
         .userinfo {
