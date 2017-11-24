@@ -1,6 +1,16 @@
-$color-primary: #409EFF; //#18c79c
-$border-level1: #D8DCE5;
-$border-level2: #DFE4ED;
+/* theme color */
+$--color-primary: #409EFF;
+$--border-color-base: #d8dce5;
+
+
+/* override */
+$--font-size-base: 14px;
+$--size-base: 14px;
+
+
+$--all-transition: all .3s cubic-bezier(.645,.045,.355,1) ;
+
+/* safe font*/
 $font-family: "Helvetica Neue",
 "Helvetica",
 "PingFang SC",
@@ -8,4 +18,3 @@ $font-family: "Helvetica Neue",
 "Microsoft YaHei",
 "Arial",
 "sans-serif";
-$font-size:14px;

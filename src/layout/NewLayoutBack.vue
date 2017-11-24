@@ -58,9 +58,6 @@
             },
         },
         mounted() {
-            const a = this.$refs.aside;
-
-            console.log(`NewLayout mounted!: ${a}`);
             // clear aside sytle
         },
     };
