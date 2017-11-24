@@ -6,8 +6,9 @@
  */
 <template>
     <el-container class="layout">
-        <section><slot name="header">header</slot></section>
-
+        <el-header class="header" :style="">
+            <slot name="header">header</slot>
+        </el-header>
         <el-container class="center">
             <el-aside class="aside" :style="asideStyle">
                 <!--for animation  -->
