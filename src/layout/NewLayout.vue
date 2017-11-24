@@ -6,7 +6,7 @@
  */
 <template>
     <el-container class="layout">
-        <el-header class="header" ref="header">
+        <el-header class="header" :style="">
             <slot name="header">header</slot>
         </el-header>
         <el-container class="center">
@@ -32,91 +32,83 @@
 
 
 <script type="text/babel">
-export default {
-    name: 'NewLayout',
-    props: {},
-    components: {},
-    data() {
-        return {
-            asideActive: true,
-        };
-    },
-    computed: {
-        asideStyle() {
-            let width = '20%';
-            if (!this.asideActive) {
-                width = '0';
-            }
-            return { width };
+    export default {
+        name: 'NewLayout',
+        props: {},
+        components: {},
+        data() {
+            return {
+                asideActive: true,
+            };
         },
-    },
-    methods: {
-        toggleAside(state) {
-            this.asideActive = !state;
+        computed: {
+            asideStyle() {
+                let width = '20%';
+                if (!this.asideActive) {
+                    width = '0';
+                }
+                return {
+                    width,
+                };
+            },
         },
-    },
-    mounted() {
-        const a = this.$refs.aside;
+        methods: {
+            toggleAside(state) {
+                this.asideActive = !state;
+            },
+        },
+        mounted() {
+            const a = this.$refs.aside;
 
-        console.log(`NewLayout mounted!: ${a}`);
-        // clear aside sytle
-    },
-};
-
+            console.log(`NewLayout mounted!: ${a}`);
+            // clear aside sytle
+        },
+    };
 </script>
 
 
 <style lang='scss'>
-@import "~@/styles/vars.scss";
-
-.layout {
-    min-height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-
-    .header {
-        border-radius: 2px;
-        background-clip: padding-box;
-        margin: 0;
+    @import "~@/styles/vars.scss";
+    .layout {
+        min-height: 100%;
         width: 100%;
-        padding: 5px 5px;
-        background: $color-primary;
-        border: 1px solid $color-primary;
-        box-shadow: 0 0 5px $color-primary;
-        vertical-align: middle;
-        line-height: 35px;
-        //position: fixed;
-        z-index: 999;
-    }
-
-    .center {
-        //margin-top: 60px;
-        .aside {
-            //transition: all 4.4s linear;
-            transition: width .2s linear;
-
-            .asidecontent {
-                padding: 20px;
-                border-right: 1px solid $border-level1;
-                box-shadow: 0 0 10px $border-level1;
-                display: block;
-                height: 100%;
-
-                .collapsed {
-                    display: none;
+        margin: 0;
+        padding: 0;
+        .header {
+            border-radius: 1px;
+            background-clip: padding-box;
+            margin: 0;
+            width: 100%;
+            background: $color-primary;
+            border: 1px solid $color-primary;
+            box-shadow: 0 0 2px $color-primary;
+            display: flex;
+            align-items: center;
+            //position: fixed;
+            z-index: 999;
+        }
+        .center {
+            //margin-top: 60px;
+            .aside {
+                //transition: all 4.4s linear;
+                transition: width .2s linear;
+                .asidecontent {
+                    padding: 20px;
+                    border-right: 1px solid $border-level1;
+                    box-shadow: 0 0 10px $border-level1;
+                    display: block;
+                    height: 100%;
+                    .collapsed {
+                        display: none;
+                    }
                 }
             }
+            .main {}
         }
-        .main {
+        .footer {
+            @extend .header;
+            padding-bottom: 0;
+            position: relative;
         }
     }
-
-    .footer {
-        @extend .header;
-        padding-bottom: 0;
-        position: relative;
-        line-height: 55px;
-    }
-}
 </style>
