@@ -6,30 +6,42 @@
  */
 <template>
     <new-layout ref="layout">
-        <template slot='header'>
-            <el-row class="header">
-                <el-col :span="10" class="icon">
-                    <hamburger @statechanged="hamburgerToggled"></hamburger>
-                </el-col>
-                <el-col :span="10" class="logo">
-                    Dashboard
-                </el-col>
-                <el-col :span="4" class="userinfo">
-                    <el-dropdown trigger="hover">
-                        <span class="el-dropdown-link userinfo-inner"><img :src="this.userAvatar" /> {{userName}}</span>
-                        <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item>我的消息</el-dropdown-item>
-                            <el-dropdown-item>设置</el-dropdown-item>
-                            <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
-                        </el-dropdown-menu>
-                    </el-dropdown>
-                </el-col>
-            </el-row>
-        </template>
-        <template slot='aside'>
+        <el-menu slot='header' :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+            <el-menu-item index="1">Processing Center</el-menu-item>
+            <el-submenu index="2">
+                <div slot="title">Workspace
+                </div>
+                <el-menu-item index="2-1">item one</el-menu-item>
+                <el-menu-item index="2-2">item two</el-menu-item>
+                <el-menu-item index="2-3">item three</el-menu-item>
+            </el-submenu>
+            <el-menu-item index="3">
+                <a href="https://www.ele.me" target="_blank">Orders</a>
+            </el-menu-item>
+        </el-menu>
+
+        <!-- <el-col :span="10" class="icon">
+    <hamburger @statechanged="hamburgerToggled"></hamburger>
+    </el-col>
+    <el-col :span="10" class="logo">
+    Dashboard
+    </el-col>
+    <el-col :span="4" class="userinfo">
+    <el-dropdown trigger="hover">
+        <span class="el-dropdown-link userinfo-inner"><img :src="this.userAvatar" /> {{userName}}</span>
+        <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>我的消息</el-dropdown-item>
+            <el-dropdown-item>设置</el-dropdown-item>
+            <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
+        </el-dropdown-menu>
+    </el-dropdown>
+    </el-col> -->
+
+        <el-row slot='aside'>
             anything here...
-        </template>
-        <template slot='main'>
+        </el-row>
+
+        <el-row slot='main'>
             <el-col :span="24" class="breadcrumb-container">
                 <strong class="title">{{$route.name}}</strong>
                 <el-breadcrumb separator="/" class="breadcrumb-inner">
@@ -41,14 +53,15 @@
                     <router-view></router-view>
                 </transition>
             </el-col>
-        </template>
-        <template slot='footer'>
+        </el-row>
+
+        <el-row slot='footer'>
             <el-row>
                 <el-col :span="8">@Copywright NeoSoong</el-col>
                 <el-col :span="8">Built 20171120</el-col>
                 <el-col :span="8">Contact Me</el-col>
             </el-row>
-        </template>
+        </el-row>
     </new-layout>
 </template>
 
@@ -60,7 +73,10 @@ import Hamburger from '@/widgets/Hamburger.vue';
 
 export default {
     // components wil be used here
-    components: { NewLayout, Hamburger },
+    components: {
+        NewLayout,
+        Hamburger,
+    },
     data() {
         return {
             brand: 'Vue Dashboard',
@@ -73,6 +89,12 @@ export default {
     methods: {
         collapse() {
             this.collapsed = !this.collapsed;
+
+            // TODO:
+
+            // FIXME:
+
+            // TODO
         },
 
         hamburgerToggled(state) {
@@ -91,7 +113,6 @@ export default {
         }
     },
 };
-
 </script>
 
 
