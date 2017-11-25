@@ -22,12 +22,14 @@ module.exports = {
         index: path.resolve(__dirname, '../dist/index.html'),
         assetsRoot: path.resolve(__dirname, '../dist'),
         assetsPublicPath: '/',
+        productionSourceMap: true,
         //-------------end---------------
 
         //-------------custermized for github pages publish---------------
         // index: path.resolve(__dirname, '../docs/index.html'),
         // assetsRoot: path.resolve(__dirname, '../docs'),
-        // assetsPublicPath: '/demo_admin',
+        // assetsPublicPath: '/demo_admin/',
+        // productionSourceMap: false,
         //-------------end---------------
 
         assetsSubDirectory: 'static',
