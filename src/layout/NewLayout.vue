@@ -11,19 +11,17 @@
         </el-header>
 
         <el-container class="content">
-            <el-aside class="aside" :style="asideStyle" resize>
-                <!--for animation  -->
-                <el-container class="asidecontent" :class="{collapsed: !asideActive}">
-                    <slot name="aside">aside</slot>
-                </el-container>
-            </el-aside>
+            <div>
+                <slot name="aside">aside</slot>
+            </div>
+
             <el-container>
                 <el-main class="main">
                     <slot name="main">main</slot>
                 </el-main>
             </el-container>
-        </el-container>
 
+        </el-container>
         <!-- <el-footer>
             <slot name="footer">footer</slot>
         </el-footer> -->
@@ -44,33 +42,16 @@ export default {
         };
     },
     computed: {
-        asideStyle() {
-            let width = '20%';
-            if (!this.asideActive) {
-                width = '0';
-            }
-            return {
-                width,
-            };
-        },
     },
     methods: {
-        toggleAside(state) {
-            this.asideActive = !state;
-        },
     },
     mounted() {
-        const a = this.$refs.aside;
-
-        console.log(`NewLayout mounted!: ${a}`);
-        // clear aside sytle
     },
 };
 </script>
 
 
 <style lang='scss'>
-@import '~@/styles/vars.scss';
 
 .layout {
     min-height: 100%;
@@ -78,25 +59,13 @@ export default {
     margin: 0;
     padding: 0;
 
-    .header{
+    .header {
         padding: 0;
-    };
+    }
 
     .content {
-        //margin-top: 60px;
-        .aside {
-            transition: $--all-transition;
-            .asidecontent {
-                padding: 20px;
-                border-right: 1px solid $--border-color-base;
-                box-shadow: 0 0 10px $--border-color-base;
-                display: block;
-                height: 100%;
-                .collapsed {
-                    display: none;
-                }
-            }
-        }
+        margin-top: 1px;
+
         .main {
             padding: 20px;
         }
