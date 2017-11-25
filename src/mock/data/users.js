@@ -1,11 +1,12 @@
 import Mock from 'mockjs';
+import icon from '@/assets/logo.png';
 
 const LoginUsers = [
     {
         id: 1,
         username: 'admin',
-        password: 'admin',
-        avatar: '@/assets/logo.png',
+        password: '123456',
+        avatar: icon,
         name: 'Soong',
     },
 ];

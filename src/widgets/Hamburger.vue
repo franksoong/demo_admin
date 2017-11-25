@@ -1,9 +1,7 @@
 <template>
-    <div class="grid-cell" @click.prevent="toggleActive">
-        <button class="hamburger hamburger-arrow-left" :class="{active: active}">
-            <span class="icon"></span>
-        </button>
-    </div>
+    <button @click.prevent="toggleActive" class="hamburger hamburger-arrow-left" :class="{active: active}">
+        <span class="icon"></span>
+    </button>
 </template>
 
 <script>
@@ -27,28 +25,13 @@ export default {
         // console.log('Hamburger mounted!');
     },
 };
-
 </script>
 
-<style scoped lang='scss'>
+<style lang='scss'>
 $color-hamburger: #777;
 $color-hamburger-active: #777;
-$font-size: 30px;
+$font-size: 24px;
 $bar-width: 0.1em;
-
-.grid-cell {
-    border: 1px solid #E5EFEE;
-    border-width: 0 1px 1px 0;
-    padding: 5px 5px;
-
-    &:nth-child(3n) {
-        border-right-width: 1px;
-    }
-    &:nth-child(2n) {
-        border-right-width: 0;
-    }
-}
-
 
 .hamburger {
     font-size: $font-size;
@@ -61,11 +44,9 @@ $bar-width: 0.1em;
     vertical-align: middle;
     border: 0 none;
     background: transparent;
-
     &:focus {
         outline: 0;
     }
-
     &:before,
     &:after,
     .icon {
@@ -82,7 +63,6 @@ $bar-width: 0.1em;
     &:after {
         margin: 0;
     }
-
     &.active {
         &:before,
         .icon,
@@ -90,10 +70,9 @@ $bar-width: 0.1em;
             background: $color-hamburger-active;
         }
     }
-
     /**
-    * LEFT ARROW
-    */
+        * LEFT ARROW
+        */
     &.hamburger-arrow-left {
         &.active {
             transform: rotate(180deg);

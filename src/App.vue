@@ -15,17 +15,15 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~@/styles/vars.scss";
+@import '~@/styles/vars.scss';
 
 body {
     margin: 0px;
     padding: 0px;
     /*background: url(assets/bg1.jpg) center !important;
     background-size: cover;*/
-    // background: #1F2D3D;
-    background-color: #fff;
-    font-family: $font-family;
-    font-size: $font-size;
+    font-family: $--font-family;
+    font-size: $--font-size;
     -webkit-font-smoothing: antialiased;
 }
 

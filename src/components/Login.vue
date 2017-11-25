@@ -23,6 +23,9 @@
 </template>
 
 <script>
+import api from '@/api';
+
+
 export default {
     data() {
         return {
@@ -50,17 +53,30 @@ export default {
 
         login(event) {
             const self = this;
-            this.$refs.loginForm.validate((valid) => {
+            self.$refs.loginForm.validate((valid) => {
                 if (valid) {
                     self.logining = true;
-                    console.log('login succeed!');
-                    self.logining = false;
 
-                    self.$router.push({ path: '/' });
-                    return true;
+                    const loginParams = { username: self.account.username, password: self.account.password };
+                    console.log(`hi ${loginParams}`);
+                    api.requestLogin(loginParams).then((data) => {
+                        self.logining = false;
+
+                        const { msg, code, user } = data;
+                        if (code !== 200) {
+                            self.$message({
+                                message: msg,
+                                type: 'error',
+                            });
+                        } else {
+                            sessionStorage.setItem('user', JSON.stringify(user));
+                            self.$router.push({ path: '/home/table' });
+                        }
+                    });
+                } else {
+                    console.log('error submit!!');
+                    return false;
                 }
-                console.log('error submit!!');
-                return false;
             });
         },
 
@@ -72,10 +88,7 @@ export default {
 
 <<style scoped lang='scss'>
   .login-container {
-    /*box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);*/
-    -webkit-border-radius: 5px;
     border-radius: 5px;
-    -moz-border-radius: 5px;
     background-clip: padding-box;
     margin: 180px auto;
     width: 350px;

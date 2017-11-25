@@ -5,64 +5,70 @@
  * @Last Modified time: 2017-11-15 16:55:51
  */
 <template>
-    <el-container>
-        <el-header>
+    <el-container class="layout">
+        <el-header class="header">
             <slot name="header">header</slot>
         </el-header>
-        <el-container>
-            <el-aside width="200px">
+
+        <el-container class="content">
+            <div>
                 <slot name="aside">aside</slot>
-            </el-aside>
+            </div>
+
             <el-container>
-                <el-main>
+                <el-main class="main">
                     <slot name="main">main</slot>
                 </el-main>
             </el-container>
+
         </el-container>
-        <el-footer>
+        <!-- <el-footer>
             <slot name="footer">footer</slot>
-        </el-footer>
+        </el-footer> -->
     </el-container>
 </template>
+
+
+
 
 <script type="text/babel">
 export default {
     name: 'NewLayout',
     props: {},
     components: {},
-    data() { return {}; },
-    computed: {},
-    methods: {},
+    data() {
+        return {
+            asideActive: true,
+        };
+    },
+    computed: {
+    },
+    methods: {
+    },
     mounted() {
-        console.log('NewLayout mounted!');
     },
 };
-
 </script>
 
 
-<<style scoped lang='scss'>
-.el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-  }
+<style lang='scss'>
 
-  .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-    line-height: 600px;
-  }
+.layout {
+    min-height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    line-height: 100px;
-  }
+    .header {
+        padding: 0;
+    }
 
+    .content {
+        margin-top: 1px;
 
-
+        .main {
+            padding: 20px;
+        }
+    }
+}
 </style>
