@@ -7,7 +7,7 @@
 <template>
     <section>
         <!--工具条-->
-        <el-col :span="24" class="toolbar">
+        <el-container class="toolbar">
             <el-form :inline="true" :model="filters">
                 <el-form-item>
                     <el-input v-model="filters.name" placeholder="Name"></el-input>
@@ -19,18 +19,18 @@
                     <el-button type="primary" @click="handleAdd">Add</el-button>
                 </el-form-item>
             </el-form>
-        </el-col>
+        </el-container>
 
         <!-- main table  -->
-        <el-table :data="users" class="maintable" highlight-current-row v-loading="listLoading" @selection-change="selectionChange">
+        <el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selectionChange" stripe>
             <el-table-column label="Select" width="55" type="selection"></el-table-column>
             <el-table-column label="Id" width="60" type="index"></el-table-column>
-            <el-table-column label="Name" width="150" prop="name" sortable></el-table-column>
+            <el-table-column label="Name" min-width="80" prop="name" sortable></el-table-column>
             <el-table-column prop="gender" label="Gender" width="150" :formatter="formatGender" sortable></el-table-column>
             <el-table-column prop="age" label="Age" width="100" sortable></el-table-column>
             <el-table-column prop="birth" label="Birthday" width="150" sortable></el-table-column>
-            <el-table-column label="Address" min-width="180" prop="addr" sortable></el-table-column>
-            <el-table-column label="Action" width="200">
+            <el-table-column label="Address" min-width="150" prop="addr" sortable resizable></el-table-column>
+            <el-table-column label="Action" min-width="150">
                 <template slot-scope="scope">
                     <el-button type="" size="small" @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
                     <el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">Delete</el-button>
@@ -39,11 +39,12 @@
         </el-table>
 
         <!--工具条-->
-        <el-col :span="24" class="toolbar">
+        <el-container class="toolbar">
             <el-button type="danger" @click="batchRemove" :disabled="this.selections.length===0">批量删除</el-button>
-            <el-pagination class="pager" layout="prev, pager, next" @current-change="handleCurrentPageChange" :page-size="20" :total="total">
+
+            <el-pagination class="pager float-right" layout="prev, pager, next" @current-change="handleCurrentPageChange" :page-size="20" :total="total">
             </el-pagination>
-        </el-col>
+        </el-container>
 
         <!--新增界面-->
         <el-dialog title="新增" :visible.sync="addFormVisible" :before-close="handleClose" :close-on-click-modal="false">
@@ -329,20 +330,26 @@ export default {
 </script>
 
 
-<style scoped lang='scss'>
+<style lang='scss'>
+@import '~@/styles/vars.scss';
+
 .pager {
-    float: right;
-    background: #f2f2f2;
+    background: $--background-color;
 }
 
 .toolbar {
-    background: #f2f2f2;
+    background: $--background-color;
     padding: 10px;
     margin: 10px 0;
+    display: block;
+
+    .el-form-item {
+        margin-bottom: 0;
+    }
 }
 
-.maintable{
-    width: 100%;
+.el-table th,
+.el-table td {
+    padding: 5px 0;
 }
-
 </style>

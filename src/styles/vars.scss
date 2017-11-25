@@ -1,17 +1,17 @@
 /* theme color */
 $--color-primary: #409EFF;
-$--border-color-base: #d8dce5;
+$--border-color: #d8dce5;
+$--background-color: #f5f7fa;
 
 
 /* override */
-$--font-size-base: 14px;
-$--size-base: 14px;
+$--font-size: 14px;
 
 
 $--all-transition: all .3s cubic-bezier(.645,.045,.355,1) ;
 
 /* safe font*/
-$font-family: "Helvetica Neue",
+$--font-family: "Helvetica Neue",
 "Helvetica",
 "PingFang SC",
 "Hiragino Sans GB",

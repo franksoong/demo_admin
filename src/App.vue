@@ -22,8 +22,8 @@ body {
     padding: 0px;
     /*background: url(assets/bg1.jpg) center !important;
     background-size: cover;*/
-    font-family: $font-family;
-    font-size: $--font-size-base;
+    font-family: $--font-family;
+    font-size: $--font-size;
     -webkit-font-smoothing: antialiased;
 }
 

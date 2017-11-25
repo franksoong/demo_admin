@@ -70,7 +70,7 @@ export default {
                             });
                         } else {
                             sessionStorage.setItem('user', JSON.stringify(user));
-                            self.$router.push({ path: '/table' });
+                            self.$router.push({ path: '/home/table' });
                         }
                     });
                 } else {

@@ -1,0 +1,13 @@
+@import 'vars.scss';
+
+
+
+// map common vars to element vars
+// Your variable overrides
+// $body-bg: #000;
+// $body-color: #111;
+$primary: $--color-primary;
+
+
+@import "node_modules/bootstrap/scss/bootstrap";
+

@@ -4,6 +4,8 @@ import Login from '@/components/Login';
 import NotFound from '@/components/404';
 
 import HomeRouter from '@/router/home-router';
+import ContactRouter from '@/router/contact-router';
+import WorkspaceRouter from '@/router/workspace-router';
 
 
 const otherRouter = [{
@@ -17,15 +19,22 @@ const otherRouter = [{
     name: 'NotFound',
     hidden: true,
 }, {
+    path: '/',
+    hidden: true,
+    redirect: {
+        path: '/home',
+    },
+}, {
     path: '*',
     hidden: true,
     redirect: {
         path: '/404',
     },
-}];
+},
+];
 
 
 Vue.use(Router);
 export default new Router({
-    routes: [...HomeRouter, ...otherRouter],
+    routes: [...HomeRouter, ...ContactRouter, ...WorkspaceRouter, ...otherRouter],
 });
