@@ -20,3 +20,7 @@ selenium-debug.log
 # tmp file
 *.tmp
 *.TMP
+
+
+# merge related files
+*.orig
