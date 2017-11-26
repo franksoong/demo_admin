@@ -121,6 +121,10 @@ export default {
 
 .demo-ruleForm{
     margin-top: 2em;
+
+    .line {
+        text-align: center;
+    }
 }
 
 </style>
